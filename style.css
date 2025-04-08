@@ -1,0 +1,614 @@
+/* Modern CSS with Glassmorphism and Animations */
+:root {
+  --primary: #6C5CE7;
+  --secondary: #FD79A8;
+  --dark: #2D3436;
+  --light: #F5F6FA;
+  --glass: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --highlight: #00CEFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--light);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Glass Card Style */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  padding: 30px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+/* Typography */
+h1, h2 {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  background: linear-gradient(to right, var(--light), var(--highlight));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+.highlight {
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.cta-btn, .unlock-btn, .upload-btn, .share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.cta-btn {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+}
+
+.cta-btn:disabled {
+  background: #636e72;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.unlock-btn {
+  background: linear-gradient(to right, #00b894, #55efc4);
+  color: var(--dark);
+  font-size: 1.1rem;
+  padding: 18px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+}
+
+.unlock-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.6);
+}
+
+.upload-btn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  color: white;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.upload-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.upload-btn input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.share-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.share-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Icons */
+.icon-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.icon-container i {
+  font-size: 3rem;
+  color: var(--highlight);
+}
+
+.fas {
+  margin-right: 10px;
+}
+
+/* Loader Animation */
+.scanning-animation {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 30px;
+}
+
+.face-outline {
+  position: absolute;
+  width: 150px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.scanner {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: var(--highlight);
+  top: 0;
+  animation: scan 3s infinite;
+  box-shadow: 0 0 10px var(--highlight);
+}
+
+@keyframes scan {
+  0% { top: 0; opacity: 1; }
+  50% { top: 100%; }
+  51% { top: 0; opacity: 0; }
+  100% { top: 0; opacity: 1; }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  to { width: 100%; }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lock-icon {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.lock-icon i {
+  font-size: 3rem;
+  color: var(--highlight);
+  animation: pulse 1.5s infinite;
+}
+
+/* Verification Animation */
+.verification-animation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
+
+.verification-animation i {
+  font-size: 3rem;
+  color: var(--highlight);
+  position: relative;
+  z-index: 2;
+}
+
+.shield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 206, 255, 0.1);
+  animation: ripple 2s infinite;
+  z-index: 1;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Countdown */
+.countdown {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.countdown-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--highlight);
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Results Display */
+.rating-display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 20px 0;
+  color: white;
+  text-align: center;
+}
+
+.rating-display span {
+  background: linear-gradient(to right, #fdcb6e, #e17055);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.result-message {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.trophy {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.trophy i {
+  font-size: 4rem;
+  color: #fdcb6e;
+  animation: bounce 2s infinite;
+}
+
+.sparkles {
+  position: relative;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.sparkle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
+}
+
+.sparkle:nth-child(1) {
+  width: 5px;
+  height: 5px;
+  top: 20%;
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+  width: 7px;
+  height: 7px;
+  top: 60%;
+  left: 50%;
+  animation-delay: 0.5s;
+}
+
+.sparkle:nth-child(3) {
+  width: 4px;
+  height: 4px;
+  top: 30%;
+  left: 70%;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Click Effect */
+button.clicked {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+  
+  .glass-card {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-btn, .unlock-btn, .upload-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .icon-container i {
+    font-size: 2.5rem;
+  }
+  
+  .scanning-animation {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .face-outline {
+    width: 120px;
+    height: 150px;
+  }
+  
+  .rating-display {
+    font-size: 2.8rem;
+  }
+  
+  .trophy i {
+    font-size: 3.5rem;
+  }
+  
+  .verification-animation {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .verification-animation i {
+    font-size: 2.5rem;
+  }
+  
+  .countdown-number {
+    font-size: 2.5rem;
+  }
+}
+
+/* Medium devices (tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .app-container {
+    max-width: 450px;
+  }
+  
+  .glass-card {
+    padding: 25px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .scanning-animation {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .face-outline {
+    width: 140px;
+    height: 170px;
+  }
+}
+
+/* Large devices (laptops/desktops, 901px and up) */
+@media only screen and (min-width: 901px) {
+  .app-container {
+    max-width: 500px;
+  }
+  
+  body {
+    padding: 30px;
+  }
+  
+  .glass-card {
+    padding: 35px;
+  }
+  
+  h1 {
+    font-size: 2.4rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cta-btn, .unlock-btn, .upload-btn {
+    padding: 18px 30px;
+    font-size: 1.1rem;
+  }
+  
+  .icon-container i {
+    font-size: 3.5rem;
+  }
+  
+  .scanning-animation {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .face-outline {
+    width: 170px;
+    height: 200px;
+  }
+  
+  .rating-display {
+    font-size: 4rem;
+  }
+  
+  .trophy i {
+    font-size: 4.5rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .app-container {
+    max-width: 550px;
+  }
+  
+  .glass-card {
+    padding: 40px;
+  }
+  
+  h1 {
+    font-size: 2.6rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  
+  .glass-card {
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    margin-bottom: 15px;
+  }
+  
+  .upload-btn {
+    margin: 10px 0;
+  }
+  
+  .scanning-animation {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+  }
+  
+  .face-outline {
+    width: 90px;
+    height: 110px;
+  }
+}

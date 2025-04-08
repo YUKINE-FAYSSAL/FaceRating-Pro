@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceRating Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Landing Section -->
+    <div class="container glass-card" id="landing">
+      <div class="icon-container">
+        <i class="fas fa-camera-retro pulse"></i>
+      </div>
+      <h1>FaceRating <span class="highlight">Pro</span></h1>
+      <p class="subtitle">Upload your photo to discover your <span class="highlight">attractiveness score</span></p>
+      
+      <label for="photoInput" class="upload-btn">
+        <i class="fas fa-cloud-upload-alt"></i> Choose Photo
+        <input type="file" id="photoInput" accept="image/*" capture="user">
+      </label>
+      
+      <button id="submitPhotoBtn" class="cta-btn" disabled>
+        <i class="fas fa-rocket"></i> Analyze Now
+      </button>
+    </div>
+
+    <!-- Loader Section -->
+    <div class="container glass-card hidden" id="loaderContainer">
+      <div class="scanning-animation">
+        <div class="scanner"></div>
+        <div class="face-outline"></div>
+      </div>
+      <h2>Scanning Face...</h2>
+      <p>Our AI is analyzing 128 facial features</p>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <!-- Unlock Modal -->
+    <div class="modal-overlay hidden" id="lockerModal">
+      <div class="modal-content glass-card">
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h2>Premium Results Locked</h2>
+        <p>Complete verification to unlock your <span class="highlight">exclusive</span> rating</p>
+        <button id="unlockTouchBtn" class="unlock-btn">
+          <i class="fas fa-fingerprint"></i> Verify Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Age Verification -->
+    <div class="modal-overlay hidden" id="ageVerification">
+      <div class="modal-content glass-card">
+        <div class="verification-animation">
+          <i class="fas fa-id-card"></i>
+          <div class="shield"></div>
+        </div>
+        <h2>Age Verification</h2>
+        <p>You must be 18+ to view these results</p>
+        <div class="countdown">
+          <div class="countdown-number">15</div>
+          <div class="countdown-label">seconds remaining</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container glass-card hidden" id="resultContainer">
+      <div class="trophy">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <h1>Your Rating</h1>
+      <div class="rating-display">
+        <span id="ratingScore">0.0</span>/10
+      </div>
+      <p class="result-message">You're in the <span class="highlight">top 5%</span> globally!</p>
+      <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+      </div>
+      <button class="cta-btn share-btn">
+        <i class="fas fa-share-alt"></i> Share Results
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
