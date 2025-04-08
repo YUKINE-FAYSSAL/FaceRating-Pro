@@ -1,6 +1,6 @@
 # FaceRating Pro ✨
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR-NETLIFY-ID/deploy-status)](https://app.netlify.com/sites/looksmaxxers/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6d22d5e7-b1e1-4dec-a257-9b59a3d90775/deploy-status)](https://app.netlify.com/sites/looksmaxxers/deploys)
 
 🔗 **Live Demo:** [https://looksmaxxers.netlify.app/](https://looksmaxxers.netlify.app/)
 
